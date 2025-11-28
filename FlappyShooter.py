@@ -90,9 +90,9 @@ def restart():
     return score
 
 # Load Images
-bgUpper = pygame.image.load("images/bgupper.png").convert()
-bgMidUpper = pygame.image.load("images/bgmidupper.png").convert()
-bgMidLower = pygame.image.load("images/bgmidlower.png").convert()
+bgUpper = pygame.image.load("images/bg/bgupper.png").convert()
+bgMidUpper = pygame.image.load("images/bg/bgmidupper.png").convert()
+bgMidLower = pygame.image.load("images/bg/bgmidlower.png").convert()
 groundBG = pygame.image.load("images/ground.png").convert()
 button = pygame.image.load("images/restart.png").convert_alpha()
 gameOverText = pygame.image.load("images/gameover.png").convert_alpha()
