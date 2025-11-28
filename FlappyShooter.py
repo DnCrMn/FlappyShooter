@@ -18,6 +18,7 @@ gravity = False
 gameOver = False
 shooting = False
 shootingPreviously = False
+scrollBG = True
 pipeGap = 150 # How much gap the pipes have
 pipeFrequency = 1500 # How often the pipe spawns in milliseconds
 lastPipeTime = pygame.time.get_ticks() - pipeFrequency # The time when the last pipe was spawned in
@@ -386,8 +387,8 @@ while running:
     if pygame.sprite.groupcollide(birdGroup, pipeGroup, False, False) or pygame.sprite.groupcollide(birdGroup, enemyGroup, False, False) or player.rect.top < 0:
         if not gameOver:
             playerHitSound.play()
-
         gameOver = True
+        scrollBG = False
 
     # Check if the player has hit the ground
     if player.rect.bottom >= groundBGY:
@@ -395,6 +396,7 @@ while running:
             playerHitSound.play()
         gameOver = True
         flying = False
+        scrollBG = False
 
     if gameOver == False and gravity == True:
         # -- Shooting -- #
@@ -433,6 +435,7 @@ while running:
             enemyGroup.add(enemy)
             lastEnemyTime = currentTime
 
+    if scrollBG:
         # -- Parallax Effect -- #
         # Scroll bg layers to the left and reset their positions accordingly
         upBGX -= upScrollSpeed
@@ -463,6 +466,7 @@ while running:
         # When retry button is clicked, restart the game
         gameOver = False
         score = restart()
+        scrollBG = True
 
     # -- Draw / Render --#
     # Draw the background
